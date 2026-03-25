@@ -2,28 +2,46 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Sexify</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
+    
     <style>
-        /* 隱藏捲動條但保留功能 */
-        ::-webkit-scrollbar { display: none; }
-        body { 
-            -webkit-tap-highlight-color: transparent; /* 移除手機點擊陰影 */
-            user-select: none; /* 防止文字被選取（保護內容） */
+        :root {
+            --sexify-red: #e11d48;
         }
-        .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom); }
+        body {
+            background-color: #000; /* 假設 Sexify 想走暗黑高級風 */
+            color: white;
+        }
+        .btn-sexify {
+            background-color: var(--sexify-red);
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
     </style>
-</head>
-<body class="bg-white text-gray-900 overflow-x-hidden">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Sexify | 你的專屬私密空間</title>
 
-    <div id="age-gate" class="fixed inset-0 z-[100] flex items-center justify-center bg-black">
-        <div class="bg-white p-8 rounded-3xl max-w-sm w-11/12 text-center shadow-2xl">
-            <h2 class="text-2xl font-black mb-6">🔞 內容確認</h2>
-            <button onclick="verifyAge()" class="w-full bg-blue-600 text-white font-bold py-4 rounded-2xl mb-4 shadow-lg">進入專屬空間</button>
-            <button onclick="window.location.href='https://google.com'" class="text-gray-400 text-sm">我未滿 18 歲</button>
-        </div>
+<div id="age-gate" ...>
+    <h2 class="text-3xl font-black mb-2 text-red-600">SEXIFY</h2>
+    <p class="text-gray-500 mb-8 text-sm">進入 Sexify 即代表您已滿 18 歲...</p>
+</div>
+
+<header class="sticky top-0 bg-white/80 backdrop-blur-md border-b z-40 px-5 py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-black tracking-tighter text-red-600">SEX<span class="text-black">IFY</span></h1>
+    <div class="flex space-x-4 items-center">
+        <i class="fa-regular fa-paper-plane text-xl text-gray-700"></i>
+        <div class="w-8 h-8 bg-gray-200 rounded-full"></div>
+    </div>
+</header>
+
+<div id="auth-screen" ...>
+    <h2 id="auth-title" class="text-3xl font-black mb-2 text-red-600">歡迎來到 Sexify</h2>
+    <p id="auth-subtitle" class="text-gray-400 text-sm mb-8">加入全球最火熱的創作者社群</p>
+    <button onclick="handleAuth()" class="w-full bg-red-600 text-white font-bold py-4 rounded-xl shadow-lg">
+        立即開始
+    </button>
+</div>
     </div>
 
     <div id="app-content" class="filter blur-2xl transition-all duration-500">
