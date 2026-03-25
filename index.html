@@ -1,0 +1,55 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css"/>
+
+<style>
+/* 隱藏 Blogger 所有原生干擾元素 */
+#header-wrapper, .sidebar-wrapper, .footer-wrapper, .post-footer, #blog-pager, .tabs-widget {
+    display: none !important;
+}
+body { background-color: #f3f4f6 !important; margin: 0 !important; padding: 0 !important; }
+.main-inner { max-width: 100% !important; padding: 0 !important; }
+
+/* 防止年齡驗證前滾動 */
+.no-scroll { overflow: hidden; }
+</style>
+
+<script>
+// 年齡驗證邏輯
+function verifyAge() {
+    localStorage.setItem('isAdult', 'true');
+    document.getElementById('age-gate').style.opacity = '0';
+    setTimeout(() => {
+        document.getElementById('age-gate').style.display = 'none';
+        document.body.classList.remove('no-scroll');
+        document.getElementById('app-content').classList.remove('blur-xl');
+    }, 300);
+}
+
+window.onload = function() {
+    if (localStorage.getItem('isAdult') === 'true') {
+        document.getElementById('age-gate').style.display = 'none';
+    } else {
+        document.body.classList.add('no-scroll');
+        document.getElementById('app-content').classList.add('blur-xl');
+    }
+}
+</script>
+
+<div id="age-gate" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black bg-opacity-95 backdrop-blur-md transition-opacity duration-300">
+    <div class="bg-white p-8 rounded-3xl max-w-sm w-full text-center shadow-2xl">
+        <div class="text-5xl mb-4">🔞</div>
+        <h2 class="text-2xl font-black mb-2">確認年齡</h2>
+        <p class="text-gray-500 mb-8 text-sm">此網站包含成人內容，您必須年滿 18 歲方可進入。</p>
+        <button onclick="verifyAge()" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl mb-3">我已滿 18 歲</button>
+        <button onclick="window.location.href='https://google.com'" class="w-full text-gray-400 text-sm">離開</button>
+    </div>
+</div>
+
+<div id="app-content" class="transition-all duration-700">
+    <div class="sticky top-0 bg-white border-b p-4 text-center font-black text-xl text-blue-500 z-50">
+        VIP ACCESS ONLY
+    </div>
+
+    <div class="max-w-md mx-auto pb-20">
+        </div>
+</div>
